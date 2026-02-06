@@ -1,33 +1,4 @@
----
-description: >-
-  The Icon Maker is a utility designed to batch-render 2D sprites from your 3D
-  prefabs. It automates the process of creating consistent UI icons for your
-  inventory, shop, or building menu.
-layout:
-  width: wide
-  title:
-    visible: true
-  description:
-    visible: true
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
----
-
-# Icon Maker
-
-{% columns %}
-{% column width="41.66666666666667%" %}
-<figure><img src="../.gitbook/assets/IconMaker_1.png" alt=""><figcaption></figcaption></figure>
-{% endcolumn %}
-
-{% column width="58.33333333333333%" %}
-#### 1. Output Settings
+# icon maker
 
 Defines the quality and location of the generated files.
 
@@ -66,8 +37,6 @@ The list of objects to render.
 
 * **Drag & Drop:** You can lock the Inspector and drag multiple prefabs from the Project View into this area.
 * **Add Selected:** Select prefabs in the Project window and click this button to add them all at once.
-{% endcolumn %}
-{% endcolumns %}
 
 ***
 
@@ -93,4 +62,3 @@ Follow these steps to generate your icons:
 
 * The tool will rapidly spawn, render, and destroy each prefab.
 * New icons will appear in your specified **Output Folder**.
-

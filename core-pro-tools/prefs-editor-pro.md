@@ -1,31 +1,6 @@
----
-description: >-
-  Prefs Editor Pro is a powerful visual interface for managing Unity's built-in
-  data saving systems: PlayerPrefs (Game Save Data) and EditorPrefs (Editor
-  Settings). It allows you to view, search, edit,
-layout:
-  width: wide
-  title:
-    visible: true
-  description:
-    visible: true
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
----
-
-# Prefs Editor Pro
+# prefs editor pro
 
 `Tools -> CorePro -> Prefs Editor Pro`
-
-<div align="left"><figure><img src="../.gitbook/assets/PrefsEditorPro_1.png" alt=""><figcaption></figcaption></figure></div>
-
-<div align="left"><figure><img src="../.gitbook/assets/PrefsEditorPro_2.png" alt=""><figcaption></figcaption></figure></div>
 
 ### 1. View Modes (Tabs)
 
@@ -71,4 +46,3 @@ You don't need to delete and recreate keys to change values.
 6. The change is saved instantly. Play your game to test.
 
 Note: This tool reads directly from the System Registry (on Windows). If your game modifies a value while this window is open, click Refresh to see the latest data.
-

@@ -1,36 +1,24 @@
-# BuildingConstructionSystem
+# Building construction system
 
 ## Overview
 
 The `BuildingConstructionSystem` class manages the construction phase of buildings in GridBuilderPro. It handles time-based construction, integrates with the global timer system, and spawns visual feedback for construction progress. This system is responsible for creating timers, managing callbacks, and coordinating between the economy system and building instances.
 
-## Class Definition
-
-```csharp
-namespace CorePro.GridBuilderPro
-{
-    public class BuildingConstructionSystem : MonoBehaviourCorePro
-    {
-        // Properties and methods
-    }
-}
-```
-
 ## Key Responsibilities
 
-| Responsibility | Description |
-|---------------|-------------|
-| **Timer Management** | Creates and manages construction timers using `GlobalTimerHub` |
-| **Visual Feedback** | Spawns `BuildingInstanceTimer` components above buildings |
-| **Callback Handling** | Triggers completion callbacks when construction finishes |
+| Responsibility           | Description                                                             |
+| ------------------------ | ----------------------------------------------------------------------- |
+| **Timer Management**     | Creates and manages construction timers using `GlobalTimerHub`          |
+| **Visual Feedback**      | Spawns `BuildingInstanceTimer` components above buildings               |
+| **Callback Handling**    | Triggers completion callbacks when construction finishes                |
 | **Resource Integration** | Works with the economy system to validate and deduct construction costs |
 
 ## Configuration Properties
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `buildingInstanceTimer` | `BuildingInstanceTimer` | Prefab for world-space timer UI |
-| `timerOffset` | `Vector3` | Vertical offset for timer display (default: `(0f, 1f, 0f)`) |
+| Property                | Type                    | Description                                                 |
+| ----------------------- | ----------------------- | ----------------------------------------------------------- |
+| `buildingInstanceTimer` | `BuildingInstanceTimer` | Prefab for world-space timer UI                             |
+| `timerOffset`           | `Vector3`               | Vertical offset for timer display (default: `(0f, 1f, 0f)`) |
 
 ## Public Methods
 
@@ -94,10 +82,10 @@ StartConstruction(building, duration)
 
 The system integrates with:
 
-| System | Purpose |
-|--------|---------|
-| **GlobalTimerHub** | For time tracking and callbacks |
-| **PoolManager** | For timer UI pooling |
+| System               | Purpose                           |
+| -------------------- | --------------------------------- |
+| **GlobalTimerHub**   | For time tracking and callbacks   |
+| **PoolManager**      | For timer UI pooling              |
 | **BuildingInstance** | For construction state management |
 
 ### GlobalTimerHub Integration
@@ -166,9 +154,9 @@ public class BuildingInstanceTimer : MonoBehaviour
 
 Construction settings are defined in `BuildingData`:
 
-| Property | Description |
-|----------|-------------|
-| `constructionTime` | Time in seconds to construct the building |
+| Property              | Description                                  |
+| --------------------- | -------------------------------------------- |
+| `constructionTime`    | Time in seconds to construct the building    |
 | `effectsOnStartBuild` | Visual effects spawned at construction start |
 
 ## Events
@@ -224,15 +212,6 @@ building.CompleteConstructionImmediately();
 
 ## Performance Considerations
 
-- **Zero Allocation**: Timers are managed through the GlobalTimerHub without allocations
-- **Pooling**: Timer UI instances are pooled for reuse
-- **Batched Updates**: Multiple construction timers can be updated efficiently
-
-## Related Documentation
-
-| Topic | Description |
-|-------|-------------|
-| [Building Systems Overview](overview.md) | High-level building systems overview |
-| [BuildingInstance](../runtime/building-instance.md) | Building instance with construction state |
-| [GlobalTimerHub](timing/global-timer-hub.md) | Timer management system |
-| [BuildingData](../data/building-data.md) | Building definition with construction time |
+* **Zero Allocation**: Timers are managed through the GlobalTimerHub without allocations
+* **Pooling**: Timer UI instances are pooled for reuse
+* **Batched Updates**: Multiple construction timers can be updated efficiently
