@@ -11,6 +11,8 @@
 ## Grid Builder Pro
 * [Overview](grid-builder-pro/overview.md)
 * [Architecture](grid-builder-pro/architecture.md)
+* [systems]
+  * [Construction System](grid-builder-pro/systems/building-construction-system.md)
 
 ## Core Pro Tools
 * [Tools Overview](core-pro-tools/overview.md)
