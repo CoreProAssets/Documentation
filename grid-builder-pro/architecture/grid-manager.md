@@ -1,4 +1,4 @@
-# Grid manager
+# GridManager API Reference
 
 ## Overview
 
@@ -31,19 +31,17 @@ GridManager gridManager = GridManager.Instance;
 GridManager gridManager = GridManager.Instance ?? FindObjectOfType<GridManager>();
 ```
 
-{% hint style="warning" %}
 **Important**: The GridManager uses `SingletonCorePro<T>` which provides automatic initialization and cleanup. In edit mode, use `ResetSingleton()` to clear stale instances.
-{% endhint %}
 
 ## Configuration Properties
 
 ### Grid Dimensions
 
-| Property           | Type         | Description                                                  |
-| ------------------ | ------------ | ------------------------------------------------------------ |
-| `cellSize2D`       | `int`        | Size of each grid cell in XZ plane (world units)             |
-| `cellHeightSize`   | `float`      | Height of each grid cell in Y axis. If <= 0, uses cellSize2D |
-| `gridDimensions3D` | `Vector3Int` | Grid dimensions: (Width X, Height Y levels, Depth Z)         |
+| Property | Type | Description |
+|----------|------|-------------|
+| `cellSize2D` | `int` | Size of each grid cell in XZ plane (world units) |
+| `cellHeightSize` | `float` | Height of each grid cell in Y axis. If <= 0, uses cellSize2D |
+| `gridDimensions3D` | `Vector3Int` | Grid dimensions: (Width X, Height Y levels, Depth Z) |
 
 ```csharp
 // Example: Configure grid dimensions
@@ -53,10 +51,10 @@ gridManager.cellSize2D = 2;  // Each cell is 2x2 world units
 
 ### Chunk Configuration
 
-| Property      | Type  | Description                                             |
-| ------------- | ----- | ------------------------------------------------------- |
-| `chunkSizeXZ` | `int` | Chunk size for XZ plane (larger for horizontal spread)  |
-| `chunkSizeY`  | `int` | Chunk size for Y axis (smaller - fewer vertical levels) |
+| Property | Type | Description |
+|----------|------|-------------|
+| `chunkSizeXZ` | `int` | Chunk size for XZ plane (larger for horizontal spread) |
+| `chunkSizeY` | `int` | Chunk size for Y axis (smaller - fewer vertical levels) |
 
 The chunk system divides the grid into smaller regions for improved memory locality and query performance:
 
@@ -69,9 +67,9 @@ Grid (50x50) with chunkSizeXZ=8:
 
 ### Layer Configuration
 
-| Property            | Type        | Description                                         |
-| ------------------- | ----------- | --------------------------------------------------- |
-| `groundLayerMask`   | `LayerMask` | Layers considered as valid ground for baking        |
+| Property | Type | Description |
+|----------|------|-------------|
+| `groundLayerMask` | `LayerMask` | Layers considered as valid ground for baking |
 | `obstacleLayerMask` | `LayerMask` | Layers considered as obstacles that block placement |
 
 ```csharp
@@ -82,35 +80,35 @@ gridManager.obstacleLayerMask = LayerMask.GetMask("Obstacle", "Wall");
 
 ### Terrain Adaptation
 
-| Property                 | Type    | Description                                      |
-| ------------------------ | ------- | ------------------------------------------------ |
-| `allowTerrainAdaptation` | `bool`  | Allows building on uneven terrain (rocks, hills) |
-| `maxGroundCheckDistance` | `float` | Maximum distance for ground raycasts             |
-| `samplerOffsetY`         | `float` | Vertical offset for terrain sampling             |
+| Property | Type | Description |
+|----------|------|-------------|
+| `allowTerrainAdaptation` | `bool` | Allows building on uneven terrain (rocks, hills) |
+| `maxGroundCheckDistance` | `float` | Maximum distance for ground raycasts |
+| `samplerOffsetY` | `float` | Vertical offset for terrain sampling |
 
 ## Reference Properties
 
-| Property         | Type                 | Description                                               |
-| ---------------- | -------------------- | --------------------------------------------------------- |
-| `mainCamera`     | `Camera`             | Reference to the main camera (auto-assigned if null)      |
-| `gridVisualizer` | `GridVisualizerBase` | Component for grid mesh visualization                     |
-| `gridHighlight`  | `GridHighlightBase`  | Component for cell highlighting                           |
-| `gridSelect`     | `GridSelectBase`     | Component for selection visualization                     |
-| `bakedGridData`  | `BakedGridData`      | ScriptableObject with pre-computed collision/terrain data |
+| Property | Type | Description |
+|----------|------|-------------|
+| `mainCamera` | `Camera` | Reference to the main camera (auto-assigned if null) |
+| `gridVisualizer` | `GridVisualizerBase` | Component for grid mesh visualization |
+| `gridHighlight` | `GridHighlightBase` | Component for cell highlighting |
+| `gridSelect` | `GridSelectBase` | Component for selection visualization |
+| `bakedGridData` | `BakedGridData` | ScriptableObject with pre-computed collision/terrain data |
 
 ## Grid Properties
 
 ### Dimensions and Size
 
-| Property              | Type         | Description                                                            |
-| --------------------- | ------------ | ---------------------------------------------------------------------- |
-| `CellSize2D`          | `float`      | Read-only cell size in XZ plane                                        |
-| `CellHeightSize`      | `float`      | Read-only cell height (returns cellHeightSize if > 0, else cellSize2D) |
-| `GridSize3D`          | `Vector3Int` | Read-only 3D footprint for a single cell                               |
-| `GridSize2D`          | `Vector2Int` | Read-only 2D footprint for a single cell                               |
-| `GridDimensions3D`    | `Vector3Int` | Read-only total grid dimensions                                        |
-| `GroundLayerMask`     | `LayerMask`  | Read-only ground layer mask                                            |
-| `AlwaysHighlightCell` | `bool`       | Whether to always highlight hovered cell                               |
+| Property | Type | Description |
+|----------|------|-------------|
+| `CellSize2D` | `float` | Read-only cell size in XZ plane |
+| `CellHeightSize` | `float` | Read-only cell height (returns cellHeightSize if > 0, else cellSize2D) |
+| `GridSize3D` | `Vector3Int` | Read-only 3D footprint for a single cell |
+| `GridSize2D` | `Vector2Int` | Read-only 2D footprint for a single cell |
+| `GridDimensions3D` | `Vector3Int` | Read-only total grid dimensions |
+| `GroundLayerMask` | `LayerMask` | Read-only ground layer mask |
+| `AlwaysHighlightCell` | `bool` | Whether to always highlight hovered cell |
 
 ```csharp
 // Read grid properties
@@ -133,7 +131,6 @@ public Vector3Int GetCell(Vector3 worldPos)
 ```
 
 **Example Usage:**
-
 ```csharp
 Vector3 playerPosition = new Vector3(15.5f, 0, 22.3f);
 Vector3Int cell = gridManager.GetCell(playerPosition);
@@ -152,7 +149,6 @@ public Vector3 CellToWorld(Vector3Int cell)
 ```
 
 **Example Usage:**
-
 ```csharp
 Vector3Int cell = new Vector3Int(5, 0, 3);
 Vector3 worldPos = gridManager.CellToWorld(cell);
@@ -172,7 +168,6 @@ public Vector3 GetCellCenter2D(Vector3 cell)
 ```
 
 **Example Usage:**
-
 ```csharp
 Vector3Int cell = new Vector3Int(5, 0, 3);
 Vector3 center = gridManager.GetCellCenter2D(cell);
@@ -207,7 +202,6 @@ public bool IsAreaFree2D(Vector2Int coordsXZ, Vector2Int sizeXZ, int yLevel = 0)
 ```
 
 **Example Usage:**
-
 ```csharp
 // Check if 3x2 area starting at (5, 3) is free
 Vector2Int baseCoords = new Vector2Int(5, 3);
@@ -229,7 +223,6 @@ public bool IsAreaFree3D(Vector3Int baseCoords, Vector3Int size)
 ```
 
 **Example Usage:**
-
 ```csharp
 // Check if 2x3x2 volume is free (useful for multi-level buildings)
 Vector3Int baseCell = new Vector3Int(5, 0, 3);
@@ -249,7 +242,6 @@ public bool IsCellFree(Vector3Int cell)
 ```
 
 **Example Usage:**
-
 ```csharp
 bool isFree = gridManager.IsCellFree(new Vector3Int(5, 0, 3));
 ```
@@ -268,7 +260,6 @@ public AreaFreeCheckResult IsAreaFreeDetailed(Vector3Int baseCell, Vector3Int si
 ```
 
 **AreaFreeCheckResult Structure:**
-
 ```csharp
 public struct AreaFreeCheckResult
 {
@@ -308,16 +299,14 @@ public void PlaceObject(ICellObject obj, Vector3Int baseCell)
 ```
 
 **Example Usage:**
-
 ```csharp
 gridManager.PlaceObject(buildingInstance, new Vector3Int(5, 0, 3));
 ```
 
 **Notes:**
-
-* Validates placement before registering
-* Handles IBlockCellsAbove interface automatically
-* Throws error if placement is invalid
+- Validates placement before registering
+- Handles IBlockCellsAbove interface automatically
+- Throws error if placement is invalid
 
 ### Remove Object
 
@@ -331,7 +320,6 @@ public void RemoveObject(ICellObject cellObject)
 ```
 
 **Example Usage:**
-
 ```csharp
 gridManager.RemoveObject(buildingInstance);
 ```
@@ -419,7 +407,6 @@ public Vector3 SnapToGridTerrain(Vector3 worldPos)
 ```
 
 **Example Usage:**
-
 ```csharp
 // Snap to grid while respecting terrain height
 Vector3 mousePos = new Vector3(15.5f, 10f, 22.3f);
@@ -451,7 +438,6 @@ public CellData GetCellDataAtWorldPos(Vector3 worldPos)
 ```
 
 **CellData Structure:**
-
 ```csharp
 public struct CellData
 {
@@ -595,7 +581,6 @@ public event Action<HashSet<ICellObject>> OnSelectionChanged;
 ```
 
 **Example Usage:**
-
 ```csharp
 // Subscribe to grid changes
 GridManager.Instance.OnCellsChanged += region => {
@@ -623,7 +608,6 @@ public void BakeGridFromScene()
 ```
 
 **Usage in Editor:**
-
 1. Configure ground and obstacle layers
 2. Set grid dimensions and cell size
 3. Click "Bake Grid from Scene" in the Inspector
@@ -640,16 +624,16 @@ private void DrawLayerConfigRow(string propertyName, string label, int REC_GRID)
 
 ## Performance Characteristics
 
-| Operation        | Time Complexity | Notes              |
-| ---------------- | --------------- | ------------------ |
-| `GetCell()`      | O(1)            | Direct calculation |
-| `CellToWorld()`  | O(1)            | Direct calculation |
-| `IsCellFree()`   | O(1)            | Hash lookup        |
-| `IsAreaFree2D()` | O(n)            | n = area cells     |
-| `IsAreaFree3D()` | O(n)            | n = volume cells   |
-| `GetObjectAt()`  | O(1)            | Hash lookup        |
-| `PlaceObject()`  | O(1)            | Hash insertion     |
-| `RemoveObject()` | O(1)            | Hash removal       |
+| Operation | Time Complexity | Notes |
+|-----------|-----------------|-------|
+| `GetCell()` | O(1) | Direct calculation |
+| `CellToWorld()` | O(1) | Direct calculation |
+| `IsCellFree()` | O(1) | Hash lookup |
+| `IsAreaFree2D()` | O(n) | n = area cells |
+| `IsAreaFree3D()` | O(n) | n = volume cells |
+| `GetObjectAt()` | O(1) | Hash lookup |
+| `PlaceObject()` | O(1) | Hash insertion |
+| `RemoveObject()` | O(1) | Hash removal |
 
 ## Common Usage Patterns
 
@@ -705,3 +689,13 @@ Vector3 snappedWorldPos = gridManager.CellToWorld(cell);
 // snappedWorldPos ≈ worldPos (snapped to grid)
 ```
 
+## Related Documentation
+
+| Topic | Description |
+|-------|-------------|
+| [Architecture Overview](overview.md) | High-level system architecture |
+| [Grid Data](grid-data.md) | Grid data structures and algorithms |
+| [CellData](cell-data.md) | Cell data structure reference |
+| [IGridData Interface](api/CorePro.GridSystem.IGridData.md) | Grid data interface |
+| [ICellObject Interface](api/CorePro.GridSystem.ICellObject.md) | Cell object interface |
+| [BakedGridData](baked-grid-data.md) | Pre-computed grid data |
