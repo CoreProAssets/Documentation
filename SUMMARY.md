@@ -1,37 +1,105 @@
-# Table of contents
+# GridBuilderPro Documentation Summary
 
-* [Welcome](README.md)
+This document provides an overview of all documentation files available for GridBuilderPro.
 
 ## Getting Started
 
-* [Publish your docs](getting-started/publish-your-docs.md)
+| File | Description |
+|------|-------------|
+| [Introduction](introduction.md) | Overview of GridBuilderPro, key features, requirements, and core concepts |
+| [Quick Start](quick-start.md) | Step-by-step guide to set up your first GridBuilderPro project |
 
-## Basics
+## Architecture
 
-* [Interactive blocks](basics/interactive-blocks.md)
+| File | Description |
+|------|-------------|
+| [Architecture Overview](architecture/overview.md) | High-level system architecture and component relationships |
+| [GridManager](architecture/grid-manager.md) | Complete API reference for GridManager - central grid authority |
 
-## Group 1
+## Data Components
 
-## Grid Builder PRO
+| File | Description |
+|------|-------------|
+| [Data Overview](data/overview.md) | Overview of ScriptableObject-based data architecture |
+| [BuildingData](data/building-data.md) | Individual building definitions |
+| [BuildingDatabaseSO](data/building-database.md) | Building catalog and runtime queries |
+| [BuildingTags](data/building-tags.md) | Category enumeration with flags attribute |
+| [BuildingCategory](data/building-category.md) | UI organization for buildings |
+| [GridBuilderDefaults](data/grid-builder-defaults.md) | Global default settings and prefabs |
 
-* [Introduction](grid-builder-pro/introduction.md)
-* [Architecture](grid-builder-pro/architecture.md)
-* [Grid manager](grid-builder-pro/grid-manager.md)
-* [Building Effects](grid-builder-pro/building-effects/README.md)
-  * [Building Spawn Materializer](grid-builder-pro/building-effects/building-spawn-materializer.md)
-  * [Building Spawn Bouncer](grid-builder-pro/building-effects/building-spawn-bouncer.md)
-  * [Copy of Building Spawn Bouncer](grid-builder-pro/building-effects/copy-of-building-spawn-bouncer.md)
-* [Page 1](grid-builder-pro/page-1.md)
-* [Data](grid-builder-pro/data.md)
-* [Systems](grid-builder-pro/systems.md)
+## Building Systems
 
-## Core Pro Tools
+| File | Description |
+|------|-------------|
+| [Systems Overview](systems/overview.md) | Index and architecture of all building systems |
+| [BuildingManager](systems/building-manager.md) | Central coordinator for building operations |
+| [BuildingModeBuild](systems/building-mode-build.md) | Building placement mode |
+| [BuildingModeSell](systems/building-mode-sell.md) | Building sell and removal mode |
+| [BuildingModeRepair](systems/building-mode-repair.md) | Building repair mode |
+| [BuildingPreviewSystem](systems/building-preview-system.md) | Ghost/preview visualization |
+| [BuildingConstructionSystem](systems/building-construction-system.md) | Construction timer management |
+| [BuildingUpgradeSystem](systems/building-upgrade-system.md) | Building upgrade system |
+| [BuildingInputSystem](systems/building-input-system.md) | User input processing |
 
-* [Economy System](core-pro-tools/economy-system/README.md)
-  * [Economy](core-pro-tools/economy-system/economy.md)
-  * [Getting started](core-pro-tools/economy-system/getting-started.md)
-  * [Economy Manager](core-pro-tools/economy-system/economy-manager.md)
-  * [Components](core-pro-tools/economy-system/components.md)
-  * [Scripting API](core-pro-tools/economy-system/scripting-api.md)
-* [Icon Maker](core-pro-tools/icon-maker.md)
-* [Prefs Editor Pro](core-pro-tools/prefs-editor-pro.md)
+## Editor Tools
+
+| File | Description |
+|------|-------------|
+| [Editor Overview](editor/overview.md) | Overview of editor tools and utilities |
+| [GridBuilderCreator](editor/creator.md) | Initial project setup wizard |
+| [GridBuilderSetupWindow](editor/setup-window.md) | Advanced configuration window |
+| [BuildingDatabaseSOEditor](editor/database-editor.md) | Building catalog management |
+
+## API Reference
+
+| File | Description |
+|------|-------------|
+| [API Overview](api/overview.md) | Complete API documentation |
+
+---
+
+## File Structure
+
+```
+docs/
+├── introduction.md
+├── quick-start.md
+├── SUMMARY.md
+├── architecture/
+│   ├── overview.md
+│   └── grid-manager.md
+├── data/
+│   ├── overview.md
+│   ├── building-data.md
+│   ├── building-database.md
+│   ├── building-tags.md
+│   ├── building-category.md
+│   └── grid-builder-defaults.md
+├── systems/
+│   ├── overview.md
+│   ├── building-manager.md
+│   ├── building-mode-build.md
+│   ├── building-mode-sell.md
+│   ├── building-mode-repair.md
+│   ├── building-preview-system.md
+│   ├── building-construction-system.md
+│   ├── building-upgrade-system.md
+│   └── building-input-system.md
+└── editor/
+    └── overview.md
+```
+
+---
+
+## Quick Links
+
+- **Start Here**: [Introduction](introduction.md)
+- **First Project**: [Quick Start](quick-start.md)
+- **Core Systems**: [Architecture Overview](architecture/overview.md)
+- **Grid Management**: [GridManager](architecture/grid-manager.md)
+- **Building Data**: [Data Overview](data/overview.md)
+- **Building Operations**: [Systems Overview](systems/overview.md)
+
+---
+
+*Last updated: 2024*
