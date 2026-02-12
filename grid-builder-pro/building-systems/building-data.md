@@ -11,9 +11,17 @@ GridBuilderPro uses a comprehensive data architecture based on ScriptableObjects
 
 The data layer consists of several interconnected asset types that work together to define the building catalog and system configuration.
 
-## BuildingData
+
 
 The `BuildingData` asset is the fundamental definition of a building in the system. Each building in your game should have a corresponding BuildingData asset that defines its properties, costs, and behaviors.
+
+## Building Data Editor
+
+<figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+
+
 
 ### Core Properties
 

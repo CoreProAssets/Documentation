@@ -1,4 +1,6 @@
-# Building mode build
+# Mode build
+
+<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
 ## Overview
 
@@ -6,30 +8,23 @@ The `BuildingModeBuild` class implements the `IBuildingMode` interface for stand
 
 ## Key Responsibilities
 
-| Responsibility          | Description                                   |
-| ----------------------- | --------------------------------------------- |
-| **Blueprint Selection** | Handles building selection from UI            |
-| **Area Validation**     | Checks grid availability and terrain flatness |
-| **Placement Execution** | Instantiates buildings from pools             |
-| **Resource Deduction**  | Validates and spends build costs              |
-| **Input Handling**      | Processes mouse and keyboard input            |
-| **Cell Selection**      | Allows selecting existing buildings           |
+| Responsibility           | Description                                   |
+| ------------------------ | --------------------------------------------- |
+| **Area Validation**      | Checks grid availability and terrain flatness |
+| **Placement Execution**  | Instantiates buildings from pools             |
+| **Resource Deduction**   | Validates and spends build costs              |
+| **Extra Input Handling** | Processes mouse and keyboard input            |
+| **Cell Selection**       | Allows selecting existing buildings           |
 
 ## Configuration Properties
 
 ### Input Actions
 
-| Property                       | Type          | Default Binding | Description                           |
-| ------------------------------ | ------------- | --------------- | ------------------------------------- |
-| `rotateClockwiseAction`        | `InputAction` | R key           | Rotates preview 90° clockwise         |
-| `rotateCounterClockwiseAction` | `InputAction` | (optional)      | Rotates preview 90° counter-clockwise |
+<table><thead><tr><th width="289.3333740234375">Property</th><th width="155.3333740234375">Type</th><th width="184">Default Binding</th><th>Description</th></tr></thead><tbody><tr><td><code>rotateClockwiseAction</code></td><td><code>InputAction</code></td><td>R key</td><td>Rotates preview 90° clockwise</td></tr><tr><td><code>rotateCounterClockwiseAction</code></td><td><code>InputAction</code></td><td>(optional)</td><td>Rotates preview 90° counter-clockwise</td></tr></tbody></table>
 
 ### Effects
 
-| Property              | Type                   | Description                              |
-| --------------------- | ---------------------- | ---------------------------------------- |
-| `effectsOnStartBuild` | `ConstructionEffect[]` | Effects spawned when construction starts |
-| `floatingTextStyle`   | `FloatingTextStyle`    | Style for build cost floating text       |
+<table><thead><tr><th width="218.33331298828125">Property</th><th width="313">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>effectsOnStartBuild</code></td><td><code>ConstructionEffect[]</code></td><td>Effects spawned when construction starts</td></tr><tr><td><code>floatingTextStyle</code></td><td><code>FloatingTextStyle</code></td><td>Style for build cost floating text</td></tr></tbody></table>
 
 ## Public Methods
 
@@ -67,18 +62,7 @@ public void OnSecondaryAction()
 public void OnCancelAction()
 ```
 
-## Usage Examples
 
-### Selecting a Building
-
-```csharp
-// Subscribe to blueprint changes
-buildingModeBuild.OnBlueprintSelected += OnBlueprintChanged;
-
-// Select a building for placement
-var buildingData = BuildingDatabaseSO.Instance.GetBuildingsByCategory(BuildingTags.Defence)[0];
-blackboard.SetSelectedBlueprintData(buildingData);
-```
 
 ### Placement Flow
 
@@ -126,41 +110,9 @@ private bool IsAreaFree(in CellData cellData)
 }
 ```
 
-## Events
 
-```csharp
-/// <summary>
-/// Fired when a building is successfully placed.
-/// </summary>
-public event Action OnBuildingPlaced;
-```
 
-## Execution Sequence
 
-```
-OnPrimaryAction()
-    │
-    ├── Check if can build
-    │   ├── Blueprint selected?
-    │   └── Can afford?
-    │
-    ├── Validate placement area
-    │   ├── Cell is free?
-    │   ├── Footprint is free?
-    │   └── Terrain is flat?
-    │
-    ├── Deduct resources
-    │   └── Show floating cost text
-    │
-    ├── Spawn building from pool
-    │   └── Set position and rotation
-    │
-    ├── Register on grid
-    │   └── Block occupied cells
-    │
-    ├── Start construction (if applicable)
-    └── Spawn effects
-```
 
 ## Cell Selection
 

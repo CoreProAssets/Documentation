@@ -13,9 +13,6 @@ GridManager follows the Singleton pattern, providing global access through a sta
 ```csharp
 // Recommended access method
 GridManager gridManager = GridManager.Instance;
-
-// Fallback with null-coalescing
-GridManager gridManager = GridManager.Instance ?? FindObjectOfType<GridManager>();
 ```
 
 **Important**: The GridManager uses `SingletonCorePro<T>` which provides automatic initialization and cleanup. In edit mode, use `ResetSingleton()` to clear stale instances.

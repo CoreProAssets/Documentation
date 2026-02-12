@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: true
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
----
-
 # System overview
 
 GridBuilderPro follows a modular, layered architecture that separates concerns between grid infrastructure, building mechanics, and user interface. This design enables flexibility, maintainability, and performance optimization by ensuring each system operates independently while communicating through well-defined interfaces.
@@ -199,11 +182,11 @@ public class CustomBuildingMode : IBuildingMode
 
 ### Building Systems
 
-The [`BuildingConstructionSystem`](../building-systems/building-construction-system.md), [`BuildingPreviewSystem`](../building-systems/building-preview-system.md), and [`BuildingUpgradeSystem`](../building-systems/building-upgrade-system.md) handle specific aspects of building management. Each system operates independently but receives coordinated input from the BuildingManager.
+The [`BuildingConstructionSystem`](../building-systems/construction-system.md), [`BuildingPreviewSystem`](../building-systems/preview-system.md), and [`BuildingUpgradeSystem`](../building-systems/upgrade-system.md) handle specific aspects of building management. Each system operates independently but receives coordinated input from the BuildingManager.
 
 ### Input Handling
 
-The [`BuildingInputSystem`](../building-systems/building-input-system.md) translates user input (mouse clicks, keyboard shortcuts) into building operations. This abstraction allows for different input schemes without modifying core building logic.
+The [`BuildingInputSystem`](../building-systems/input-system.md) translates user input (mouse clicks, keyboard shortcuts) into building operations. This abstraction allows for different input schemes without modifying core building logic.
 
 ## Visualization Layer
 
@@ -262,15 +245,4 @@ Static grid data (terrain, obstacles) is pre-computed at edit time and serialize
 | [`IGridHighlight`](/broken/pages/779c9e143e435392346290220ac510a2e6eda3d5)        | Custom highlighting     | Particle-based effects            |
 | [`IBuildingMode`](/broken/pages/129de2b291b98035c3b461bb99afa46baf18e791)         | New building operations | Demolish, Combine modes           |
 | [`IBuildingActionTarget`](/broken/pages/30174466cacd3a4114cf9ad41c439bfbdb545176) | Building responses      | Custom destruction effects        |
-
-### Event Hooks
-
-Systems expose events that allow external code to react to changes without direct coupling:
-
-```csharp
-// Example: React to building placement
-GridManager.Instance.OnCellsChanged += region => {
-    // Custom logic
-};
-```
 

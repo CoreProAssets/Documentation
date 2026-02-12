@@ -1,4 +1,6 @@
-# Building upgrade system
+# Upgrade system
+
+<figure><img src="../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 
 ## Overview
 

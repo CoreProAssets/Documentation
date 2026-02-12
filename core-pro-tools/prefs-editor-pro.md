@@ -1,4 +1,10 @@
-# prefs editor pro
+# Prefs editor pro
+
+<figure><img src="../.gitbook/assets/PrefsEditorPro_1.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/PrefsEditorPro_2.png" alt=""><figcaption></figcaption></figure>
+
+
 
 `Tools -> CorePro -> Prefs Editor Pro`
 

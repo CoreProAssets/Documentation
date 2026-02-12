@@ -13,33 +13,30 @@ BuildingManager
      │
      ├── BuildingConstructionSystem
      │    │    Handles: Construction timers, completion callbacks
-     │    └── Uses: GlobalTimerHub, PoolManager
+     │  
      │
      ├── BuildingPreviewSystem
      │    │    Handles: Ghost visualization, material swapping
-     │    └── Uses: PoolManager, GridManager
+     │    
      │
      ├── BuildingUpgradeSystem
      │    │    Handles: Building evolution, level transitions
-     │    └── Uses: Economy, PoolManager
+     │    
      │
      ├── BuildingInputSystem
      │    │    Handles: User input processing
-     │    └── Uses: Unity Input System, Custom providers
+     │    
      │
      └── Building Modes
           │
           ├── BuildingModeBuild
           │    │    Handles: Placement, rotation, validation
-          │    └── Uses: PreviewSystem, GridManager, Economy
           │
           ├── BuildingModeSell
           │    │    Handles: Building removal, resource refunds
-          │    └── Uses: Economy, GridManager
           │
           └── BuildingModeRepair
                │    Handles: Health restoration, repair costs
-               └── Uses: HealthSystem, Economy
 ```
 
 ## Documentation Index

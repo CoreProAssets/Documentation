@@ -1,5 +1,9 @@
 # Components
 
+{% hint style="danger" %}
+Page under construction
+{% endhint %}
+
 #### Resource Counter UI
 
 Displays the current amount of a specific resource on the screen.

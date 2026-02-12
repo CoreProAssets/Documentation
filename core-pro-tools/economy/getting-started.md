@@ -27,6 +27,10 @@ public enum ResourceId : int
 * In the Project View, right-click and select:\
   `Create -> Core Pro -> Economy -> Resource Definition`.
 
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+
 ***
 
 ### Step 3: Fill fields in Resource Definition
@@ -38,18 +42,34 @@ public enum ResourceId : int
 * In the Project View, right-click and select: `Create -> Core Pro -> Economy -> Database`.
 * In the created file add Resource Definitions
 
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
 ***
 
 ### Step 6: Add Resources Definition to Database
 
+<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
 ### Tip: You may also use Economy Window.
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
-### Step 7 : Add the Manager to the Scene
+### Step 7 : Create Economy Account:
+
+In the Project View, right-click and select: `Create -> Core Pro -> Economy -> Economy Account`.
+
+<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+### Step 8 : Add the Manager to the Scene
 
 1. Create an empty GameObject and name it `[Economy]`.
 2. Add the component to it. `EconomyManager`
 3. Assign your created **Database** asset to the `Database` field in the Inspector.
+4. Assign your created **Economy** **Account** asset to the `Account` field in the Inspector.
 
-Tip: EconomyManager is a singleton with DontDestroyOnLoad enabled. You only need to place it once in your starting scene.
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+

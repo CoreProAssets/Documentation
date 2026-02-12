@@ -1,8 +1,11 @@
 # Economy manager
 
+<figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+
+#### 1. Default inspector
+
 This area is used for setting up the component before or during the game.
 
-* **Dont Destroy On Load:** If checked, the Economy Manager persists between scene changes.
 *   **Economy Database:** Reference to the .
 
     * _Inline Editing:_ You can expand this field to view and edit resource definitions (Name, Icon, Initial Capacity) directly within the Manager, without searching for the asset file.

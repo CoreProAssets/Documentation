@@ -1,5 +1,7 @@
 # Building manager
 
+<figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+
 ## Overview
 
 The `BuildingManager` class serves as the central coordinator for all building-related systems in GridBuilderPro. It acts as a facade that delegates operations to specialized subsystems including construction, preview, upgrade, and building modes. This singleton manages the overall state of building operations and provides a unified API for external systems.
