@@ -4,95 +4,7 @@
 
 The `BuildingInputSystem` class handles user input processing for building operations in GridBuilderPro. It provides an abstraction layer between raw input sources (keyboard, mouse, touch) and the building mode system. This allows for flexible input handling that can be easily extended or replaced without modifying core building logic.
 
-## Key Responsibilities
 
-| Responsibility         | Description                             |
-| ---------------------- | --------------------------------------- |
-| **Input Abstraction**  | Provides unified input interface        |
-| **Mode Switching**     | Handles mode change input               |
-| **Action Mapping**     | Maps input to building actions          |
-| **Input State**        | Tracks current input state              |
-| **Editor Integration** | Supports both old and new input systems |
-
-## Input Sources
-
-The system supports multiple input sources:
-
-| Source                 | Description                                  |
-| ---------------------- | -------------------------------------------- |
-| **Unity Input System** | New InputSystem package (recommended)        |
-| **Legacy Input**       | Input.GetButton, Input.GetKeyDown (fallback) |
-| **Custom Input**       | Custom input providers (extensible)          |
-
-## Configuration Properties
-
-| Property             | Type      | Description                            |
-| -------------------- | --------- | -------------------------------------- |
-| `useNewInputSystem`  | `bool`    | Use Unity's new Input System           |
-| `primaryActionKey`   | `KeyCode` | Primary action key (default: Mouse0)   |
-| `secondaryActionKey` | `KeyCode` | Secondary action key (default: Mouse1) |
-| `cancelKey`          | `KeyCode` | Cancel action key (default: Escape)    |
-| `rotateKey`          | `KeyCode` | Rotate building key (default: R)       |
-
-## Input Bindings
-
-### Default Bindings
-
-| Action                       | Default Binding   | Description                  |
-| ---------------------------- | ----------------- | ---------------------------- |
-| **Primary Action**           | Left Mouse Click  | Place building / Select cell |
-| **Secondary Action**         | Right Mouse Click | Deselect                     |
-| **Cancel**                   | Escape            | Cancel mode / Deselect       |
-| **Rotate Clockwise**         | R                 | Rotate 90° clockwise         |
-| **Rotate Counter-Clockwise** | Q                 | Rotate 90° counter-clockwise |
-| **Mode: Build**              | 1                 | Switch to build mode         |
-| **Mode: Sell**               | 2                 | Switch to sell mode          |
-| **Mode: Repair**             | 3                 | Switch to repair mode        |
-
-## Public Methods
-
-### Mode Management
-
-```csharp
-/// <summary>
-/// Changes the current building mode and reconfigures input accordingly.
-/// </summary>
-/// <param name="newMode">The mode to switch to.</param>
-public void ChangeMode(BuildingMode newMode)
-```
-
-### Input Processing
-
-```csharp
-/// <summary>
-/// Processes input for the current frame. Called from Update.
-/// </summary>
-public void ProcessInput()
-
-/// <summary>
-/// Checks if primary action was triggered this frame.
-/// </summary>
-/// <returns>True if primary action was triggered.</returns>
-public bool WasPrimaryActionPressed()
-
-/// <summary>
-/// Checks if secondary action was triggered this frame.
-/// </summary>
-/// <returns>True if secondary action was triggered.</returns>
-public bool WasSecondaryActionPressed()
-
-/// <summary>
-/// Checks if cancel action was triggered this frame.
-/// </summary>
-/// <returns>True if cancel action was triggered.</returns>
-public bool WasCancelPressed()
-
-/// <summary>
-/// Checks if rotate action was triggered this frame.
-/// </summary>
-/// <returns>True if rotate action was triggered.</returns>
-public bool WasRotatePressed()
-```
 
 ## Usage Examples
 
@@ -123,17 +35,6 @@ void Update()
         currentMode.OnCancelAction();
     }
 }
-```
-
-### Mode Switching
-
-```csharp
-// Switch to build mode
-inputSystem.ChangeMode(BuildingMode.Build);
-
-// This reconfigures input bindings for build mode
-// - Enables rotation input
-// - Enables placement validation
 ```
 
 ## Input State
