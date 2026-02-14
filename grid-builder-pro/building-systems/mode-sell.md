@@ -1,3 +1,22 @@
+---
+layout:
+  width: wide
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+  tags:
+    visible: true
+---
+
 # Mode sell
 
 <figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
@@ -164,60 +183,3 @@ public event Action<BuildingInstance, ResourceAmount[]> OnBuildingSold;
 /// </summary>
 public event Action<BuildingInstance, string> OnSellFailed;
 ```
-
-## Execution Flow
-
-```
-OnPrimaryAction()
-    │
-    ├── Check if building is selected
-    ├── Validate sell conditions
-    │   ├── Player ownership?
-    │   └── Not under construction?
-    │
-    ├── Calculate sell rewards
-    │   ├── Custom rewards or percentage?
-    │   └── Format refund amount
-    │
-    ├── Add resources to player
-    │   └── Show floating refund text
-    │
-    ├── Remove from grid
-    │   └── Unblock occupied cells
-    │
-    ├── Return to pool
-    └── Fire OnBuildingSold event
-```
-
-## Visual Feedback
-
-### Highlight System
-
-When hovering over buildings in sell mode:
-
-| State                     | Visual           |
-| ------------------------- | ---------------- |
-| Can Sell                  | Green highlight  |
-| Cannot Sell (wrong owner) | Red highlight    |
-| Under Construction        | Yellow highlight |
-
-### Floating Text
-
-```csharp
-// Spawn floating text showing refund
-FloatingTextManager.Instance.SpawnResourceAmounts(
-    rewards: refundAmounts,
-    position: building.GetCenterPoint(),
-    style: floatingTextStyle,
-    isPositive: true  // Green text for refunds
-);
-```
-
-## Configuration
-
-### BuildingData Sell Settings
-
-| Property               | Description                          |
-| ---------------------- | ------------------------------------ |
-| `sellRefundPercentage` | Portion of build cost returned (0-1) |
-| `customSellRewards`    | Optional custom sell rewards         |

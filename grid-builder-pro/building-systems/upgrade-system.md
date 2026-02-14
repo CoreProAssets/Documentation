@@ -128,49 +128,6 @@ bool HasMaxLevel(BuildingInstance building)
 }
 ```
 
-## Upgrade Execution Flow
-
-```
-ExecuteUpgrade(oldInstance)
-    │
-    ├── 1. Validate prerequisites
-    │   └── Exit if validation fails
-    │
-    ├── 2. Get next level data
-    │   ├── BuildingInstance nextLevelPrefab
-    │   ├── position = oldInstance.transform.position
-    │   └── rotation = oldInstance.GetVisualRotAngle()
-    │
-    ├── 3. Get base cell before removal
-    │   └── Vector3Int baseCell = gridManager.GetCellData(oldInstance).Cell
-    │
-    ├── 4. Deduct upgrade costs
-    │   ├── Get upgrade cost from BuildingData
-    │   └── Economy.TrySpend(resourceAmounts)
-    │
-    ├── 5. Remove old building
-    │   ├── Remove from grid registry
-    │   └── Return to pool or deactivate
-    │
-    ├── 6. Spawn new level
-    │   ├── Get pooled BuildingInstance
-    │   ├── Set position and rotation
-    │   └── Initialize new instance
-    │
-    ├── 7. Register new building
-    │   └── gridManager.PlaceObject(newInstance, baseCell)
-    │
-    ├── 8. Start construction (if applicable)
-    │   ├── Get construction time from new building
-    │   └── StartConstruction(newInstance, duration)
-    │
-    ├── 9. Spawn effects
-    │   └── PoolManager.Instance.SpawnGameObject()
-    │
-    └── 10. Fire events
-        └── OnBuildingUpgraded?.Invoke(newInstance)
-```
-
 ## BuildingData Upgrade Configuration
 
 | Property        | Description                            |
@@ -185,19 +142,6 @@ ExecuteUpgrade(oldInstance)
 /// Event fired when a building has successfully finished the upgrade transformation.
 /// </summary>
 public event Action<BuildingInstance> OnBuildingUpgraded;
-```
-
-### Subscribing to Events
-
-```csharp
-// Subscribe to upgrade completion
-upgradeSystem.OnBuildingUpgraded += OnBuildingUpgraded;
-
-void OnBuildingUpgraded(BuildingInstance newBuilding)
-{
-    Debug.Log($"Upgraded to: {newBuilding.name}");
-    // Update UI, play sound, etc.
-}
 ```
 
 ## Effects System
@@ -225,8 +169,7 @@ private void SpawnEffects(BuildingInstance buildingInstance)
 ```csharp
 public ResourceAmount[] GetUpgradeCost(BuildingInstance building)
 {
-    BuildingData nextLevelData = building.buildingData.GetNextLevelBuildingData();
-    return nextLevelData.buildCost;
+    return building.buildingData.GetNextLevelBuildingData();
 }
 ```
 

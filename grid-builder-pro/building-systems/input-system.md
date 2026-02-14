@@ -1,4 +1,4 @@
-# Building input system
+# Input system
 
 ## Overview
 
@@ -206,59 +206,6 @@ public void ProcessTouchInput()
 public Vector3 GetTouchWorldPosition(int touchIndex)
 ```
 
-### Touch Gestures
-
-| Gesture        | Action                    |
-| -------------- | ------------------------- |
-| **Single Tap** | Place building / Select   |
-| **Double Tap** | Rotate                    |
-| **Long Press** | Show context menu         |
-| **Drag**       | Rotate (after long press) |
-
-## Custom Input Providers
-
-The system supports custom input providers:
-
-```csharp
-public interface IInputProvider
-{
-    bool GetPrimaryAction();
-    bool GetSecondaryAction();
-    bool GetCancel();
-    bool GetRotate();
-    Vector3 GetPointerPosition();
-    bool IsPointerOverUI();
-}
-
-/// <summary>
-/// Register a custom input provider.
-/// </summary>
-/// <param name="provider">The input provider to use.</param>
-public void SetInputProvider(IInputProvider provider)
-```
-
-### Example Custom Provider
-
-```csharp
-public class GamepadInputProvider : IInputProvider
-{
-    public bool GetPrimaryAction()
-    {
-        return Input.GetButtonDown("Fire1");
-    }
-    
-    public bool GetSecondaryAction()
-    {
-        return Input.GetButtonDown("Fire2");
-    }
-    
-    // ... implement other methods
-}
-
-// Register custom provider
-inputSystem.SetInputProvider(new GamepadInputProvider());
-```
-
 ## Input System Configuration
 
 ### New Input System
@@ -319,16 +266,16 @@ void OnGUI()
 * **No Allocations**: Raycast results use cached structures
 * **Conditional Processing**: Only processes input when in building mode
 
-| Topic                                                                                | Description                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------ |
-| [Building Systems Overview](/broken/pages/f016c8ff2609f90a652203ead003158f64b9924f)  | High-level building systems overview |
-| [BuildingModeBuild](/broken/pages/0307eb33f2b7315a407c03a03719f7b36e291bfe)          | Build mode with input handling       |
-| [GridManager](/broken/pages/64bc8ef8453a682225b79129bec572a06e37d611)                | Grid coordinate system               |
-| [Unity Input System](https://docs.unity3d.com/Packages/com.unity.inputsystem@latest) | Input System documentation           |
+| Topic                     | Description                          |
+| ------------------------- | ------------------------------------ |
+| Building Systems Overview | High-level building systems overview |
+| BuildingModeBuild         | Build mode with input handling       |
+| GridManager               | Grid coordinate system               |
+| Unity Input System        | Input System documentation           |
 
-| Topic                                                                                | Description                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------ |
-| [Building Systems Overview](/broken/pages/f016c8ff2609f90a652203ead003158f64b9924f)  | High-level building systems overview |
-| [BuildingModeBuild](/broken/pages/0307eb33f2b7315a407c03a03719f7b36e291bfe)          | Build mode with input handling       |
-| [GridManager](/broken/pages/64bc8ef8453a682225b79129bec572a06e37d611)                | Grid coordinate system               |
-| [Unity Input System](https://docs.unity3d.com/Packages/com.unity.inputsystem@latest) | Input System documentation           |
+| Topic                     | Description                          |
+| ------------------------- | ------------------------------------ |
+| Building Systems Overview | High-level building systems overview |
+| BuildingModeBuild         | Build mode with input handling       |
+| GridManager               | Grid coordinate system               |
+| Unity Input System        | Input System documentation           |

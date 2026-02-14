@@ -115,21 +115,6 @@ buildingManager.SetMode(BuildingMode.Repair);
 // Damaged buildings are now highlighted
 ```
 
-### Repairing a Building
-
-```csharp
-// User clicks on a damaged building
-repairMode.OnPrimaryAction();
-
-// This triggers:
-// 1. Check if building is damaged
-// 2. Calculate repair cost
-// 3. Validate player can afford
-// 4. Deduct resources
-// 5. Restore building health
-// 6. Show completion effects
-```
-
 ### Get Repair Preview
 
 ```csharp
@@ -183,34 +168,6 @@ public event Action<BuildingInstance, string> OnRepairFailed;
 /// Fired when repair cost changes (hover).
 /// </summary>
 public event Action<ResourceAmount[]> OnRepairCostPreviewChanged;
-```
-
-## Execution Flow
-
-```
-OnPrimaryAction()
-    │
-    ├── Check if building is selected
-    ├── Validate repair conditions
-    │   ├── Player ownership?
-    │   ├── Building damaged?
-    │   └── Can afford?
-    │
-    ├── Calculate repair cost
-    │   ├── Get full repair cost
-    │   └── Calculate proportional amount
-    │
-    ├── Deduct resources
-    │   └── Show floating cost text
-    │
-    ├── Restore health
-    │   ├── Set to full health
-    │   └── Update health bar
-    │
-    ├── Spawn effects
-    │   └── Show repair completion
-    │
-    └── Fire OnBuildingRepaired event
 ```
 
 ## Visual Feedback

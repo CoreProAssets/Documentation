@@ -1,18 +1,8 @@
 # Table of contents
 
-## Getting Started
-
-* [Introduction](README.md)
-* [Quick Start](getting-started/quick-start.md)
-
-## Basics
-
-* [Core Concepts](basics/core-concepts.md)
-* [Setup](basics/setup.md)
-
 ## Grid Builder Pro
 
-* [Overview](grid-builder-pro/overview/README.md)
+* [Overview](README.md)
   * [Introduction to GridBuilderPro](grid-builder-pro/overview/introduction-to-gridbuilderpro.md)
   * [System overview](grid-builder-pro/overview/system-overview.md)
 * [How to:](grid-builder-pro/how-to/README.md)
@@ -20,7 +10,6 @@
   * [Create Building](grid-builder-pro/how-to/create-building.md)
 * [Grid system](grid-builder-pro/grid-system/README.md)
   * [Grid manager](grid-builder-pro/grid-system/grid-manager.md)
-  * [How bake level data](grid-builder-pro/grid-system/how-bake-level-data.md)
 * [Building systems](grid-builder-pro/building-systems/README.md)
   * [Building Data](grid-builder-pro/building-systems/building-data.md)
   * [Building manager](grid-builder-pro/building-systems/building-manager.md)

@@ -33,7 +33,7 @@ GridBuilderPro provides extensive editor tooling to streamline your workflow and
 
 * **GridBuilderCreator**: A comprehensive setup wizard that guides you through the initial configuration of the grid system. This tool automatically creates all necessary components and assigns default values based on your project requirements.
 * **GridBuilderSetupWindow**: An advanced configuration window that provides fine-grained control over all aspects of the grid system. This includes layer configuration, visual settings, and performance tuning options.
-* **BuildingDatabaseSOEditor**: A specialized editor for managing your building database. It provides a clean interface for adding, editing, and organizing buildings, with support for categories, tags, and bulk operations.
+* **BuildingDatabaseEditor**: A specialized editor for managing your building database. It provides a clean interface for adding, editing, and organizing buildings, with support for categories, tags, and bulk operations.
 * **BuildingDataEditorWindow**: A detailed editor for individual building configurations. This window provides access to all building properties including costs, requirements, behaviors, and visual settings.
 
 ### Visual Feedback System

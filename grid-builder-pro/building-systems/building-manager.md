@@ -16,16 +16,6 @@ The `BuildingManager` class serves as the central coordinator for all building-r
 | **Event Propagation**   | Fires events for external systems            |
 | **Building Lifecycle**  | Handles building removal and cleanup         |
 
-## Singleton Access
-
-```csharp
-// Recommended access method
-BuildingManager manager = BuildingManager.Instance;
-
-// Or via property
-BuildingManager manager = this.buildingManager;
-```
-
 ## Configuration Properties
 
 ### Game Rules
@@ -114,8 +104,6 @@ public GridManager GetGridManager() => gridManager;
 public BuildingManagerUI GetBuildingUIManager() => buildingManagerUI;
 ```
 
-## Mode Management
-
 ### Set Mode
 
 ```csharp
@@ -126,17 +114,6 @@ public BuildingManagerUI GetBuildingUIManager() => buildingManagerUI;
 public void SetMode(BuildingMode newMode)
 ```
 
-**Mode Behavior:**
-
-| Mode       | Grid Visibility | UI Visibility | Input System |
-| ---------- | --------------- | ------------- | ------------ |
-| `None`     | Hidden          | Hidden        | Disabled     |
-| `Inactive` | Hidden          | Hidden        | Disabled     |
-| `Build`    | Visible         | Building Menu | Build Mode   |
-| `Sell`     | Visible         | Sell UI       | Sell Mode    |
-| `Upgrade`  | Visible         | Upgrade UI    | Upgrade Mode |
-| `Repair`   | Visible         | Repair UI     | Repair Mode  |
-
 ### Toggle Mode
 
 ```csharp
@@ -146,30 +123,6 @@ public void SetMode(BuildingMode newMode)
 /// <param name="mode">The mode to toggle.</param>
 public void ToggleMode(BuildingMode mode)
 ```
-
-### Quick Mode Setters
-
-```csharp
-/// <summary>
-/// Sets build mode.
-/// </summary>
-[Button("Set Build Mode")]
-public void SetBuildMode()
-
-/// <summary>
-/// Sets sell mode.
-/// </summary>
-[Button("Set Sell Mode")]
-public void SetSellMode()
-
-/// <summary>
-/// Disables all modes.
-/// </summary>
-[Button("Disable All Modes")]
-public void DisableAllModes()
-```
-
-## Building Lifecycle
 
 ### Remove Building
 
@@ -182,34 +135,7 @@ public void DisableAllModes()
 public bool RemoveBuilding(BuildingInstance building)
 ```
 
-**Removal Flow:**
-
-```
-RemoveBuilding(building)
-    │
-    ├── 1. Check if building is selected
-    │   └── Deselect if needed
-    │
-    ├── 2. Get base cell from registry
-    │   └── Vector3Int baseCell = gridManager.GetCellData(building).Cell
-    │
-    ├── 3. Calculate unblock area
-    │   └── Consider BlockCellsAbove interface
-    │
-    ├── 4. Unblock cells
-    │   └── gridManager.UnblockArea3D()
-    │
-    ├── 5. Remove from registry
-    │   └── gridManager.RemoveObject()
-    │
-    ├── 6. Update connections
-    │   └── BuildingConnectionSystem.UpdateConnectionsAround()
-    │
-    └── 7. Deactivate
-        └── building.gameObject.SetActive(false)
-```
-
-## Mode Change Handling
+### Mode Change Handling
 
 ```csharp
 /// <summary>
@@ -223,7 +149,7 @@ public void HandleDisableBuildingMode()
 public void HandleCancelSelection()
 ```
 
-## Player Ownership
+### Player Ownership
 
 ```csharp
 /// <summary>
@@ -233,7 +159,9 @@ public void HandleCancelSelection()
 /// <returns>True if owned by local player.</returns>
 public bool IsOwnedByLocalPlayer(BuildingInstance building)
 {
-    if (building == null) return false;
+    if (building == null) 
+        return false;
+        
     return building.Faction == localPlayerFaction;
 }
 
@@ -247,7 +175,7 @@ public void SetLocalPlayerFaction(FactionType faction)
 }
 ```
 
-## Events
+### Events
 
 ```csharp
 /// <summary>
@@ -268,7 +196,7 @@ void OnModeChanged(BuildingMode newMode)
 }
 ```
 
-## Blackboard Integration
+### Blackboard Integration
 
 The BuildingManager works with `BuildingSystemBlackboardSO` for shared state:
 
@@ -277,62 +205,6 @@ The BuildingManager works with `BuildingSystemBlackboardSO` for shared state:
 | `selectedBlueprint` | Currently selected building to place |
 | `selectedBuilding`  | Currently selected existing building |
 | `TargetCellRef`     | Current cell under cursor            |
-
-## Usage Examples
-
-### Basic Building Flow
-
-```csharp
-// Switch to build mode
-BuildingManager.Instance.SetMode(BuildingMode.Build);
-
-// Select a building from UI
-blackboard.SetSelectedBlueprintData(selectedBuildingData);
-
-// User clicks to place
-// Building is placed, construction starts (if applicable)
-
-// Switch to select mode
-BuildingManager.Instance.SetMode(BuildingMode.Inactive);
-
-// Click on building to select
-// Show building info panel
-
-// Switch to sell mode
-BuildingManager.Instance.SetMode(BuildingMode.Sell);
-
-// Click on selected building to sell
-// Resources refunded, building removed
-```
-
-### Checking State
-
-```csharp
-// Check current mode
-BuildingMode currentMode = BuildingManager.Instance.CurrentMode;
-
-// Check if in build mode
-if (currentMode == BuildingMode.Build)
-{
-    // Handle build mode specific logic
-}
-
-// Get building system
-var previewSystem = BuildingManager.Instance.GetPreviewSystem();
-var constructionSystem = BuildingManager.Instance.GetConstructionSystem();
-```
-
-## Editor Support
-
-### Inspector Buttons
-
-The BuildingManager provides editor buttons for quick testing:
-
-| Button                | Action                 |
-| --------------------- | ---------------------- |
-| **Set Build Mode**    | Switches to build mode |
-| **Set Sell Mode**     | Switches to sell mode  |
-| **Disable All Modes** | Clears all modes       |
 
 ## Performance Considerations
 

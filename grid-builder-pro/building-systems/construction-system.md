@@ -49,37 +49,6 @@ constructionSystem.StartConstruction(buildingInstance, 5f);
 // 4. Call building.OnConstructionCompleted() when finished
 ```
 
-## Construction Flow
-
-```
-StartConstruction(building, duration)
-    │
-    ├── 1. Validate parameters
-    │   ├── Check building != null
-    │   └── Check duration > 0
-    │
-    ├── 2. Create logical timer in GlobalTimerHub
-    │   ├── duration: construction duration
-    │   ├── useUnscaledTime: false (uses game time)
-    │   ├── channel: Gameplay
-    │   ├── complete: building (callback target)
-    │   ├── updateListener: building
-    │   └── token: building.GetInstanceID()
-    │
-    ├── 3. Spawn world-space timer UI (if configured)
-    │   ├── Get pooled BuildingInstanceTimer
-    │   ├── Position at building center + offset
-    │   ├── Setup timer duration
-    │   └── Create timer with timerAdapter as listener
-    │
-    ├── 4. Set construction state
-    │   ├── building.SetConstructionDuration(duration)
-    │   └── building.OnConstructionStarted()
-    │
-    └── 5. Wait for completion
-        └── GlobalTimerHub calls building.OnConstructionCompleted()
-```
-
 ## Integration Points
 
 The system integrates with:

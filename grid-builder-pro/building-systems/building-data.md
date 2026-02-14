@@ -25,15 +25,15 @@ The `BuildingData` asset is the fundamental definition of a building in the syst
 
 ### Core Properties
 
-| Property       | Type                                                                         | Description                                        |
-| -------------- | ---------------------------------------------------------------------------- | -------------------------------------------------- |
-| `buildingTags` | [`BuildingTags`](/broken/pages/515ef7ba6bb084c36601bf5746034efa9ab7d7ed)     | Category flags used for filtering and organization |
-| `buildingType` | [`BuildingType`](/broken/pages/7f56da0054c4d6509e4a51dfb927a9fccb1f8b90)     | Functional classification of the building          |
-| `buildingName` | string                                                                       | Display name shown in UI                           |
-| `prefab`       | [`BuildingInstance`](/broken/pages/86daf2a8cbb74bdc6018279e5bdbed7769e96f11) | Prefab instantiated when building is placed        |
-| `icon`         | Sprite                                                                       | Thumbnail displayed in building selection UI       |
-| `description`  | string                                                                       | Detailed description for UI panels                 |
-| `sortWeight`   | int                                                                          | Ordering priority (lower values appear first)      |
+| Property       | Type               | Description                                        |
+| -------------- | ------------------ | -------------------------------------------------- |
+| `buildingTags` | `BuildingTags`     | Category flags used for filtering and organization |
+| `buildingType` | `BuildingType`     | Functional classification of the building          |
+| `buildingName` | string             | Display name shown in UI                           |
+| `prefab`       | `BuildingInstance` | Prefab instantiated when building is placed        |
+| `icon`         | Sprite             | Thumbnail displayed in building selection UI       |
+| `description`  | string             | Detailed description for UI panels                 |
+| `sortWeight`   | int                | Ordering priority (lower values appear first)      |
 
 ### Build Properties
 
@@ -53,16 +53,16 @@ The `BuildingData` asset is the fundamental definition of a building in the syst
 
 ### Upgrade Properties
 
-| Property        | Type                                                                     | Description                           |
-| --------------- | ------------------------------------------------------------------------ | ------------------------------------- |
-| `level`         | int                                                                      | Current upgrade level of the building |
-| `nextLevelData` | [`BuildingData`](/broken/pages/f96c5196fdb41a2138672584f476e1f6a73cf95c) | Reference to next level's data asset  |
+| Property        | Type           | Description                           |
+| --------------- | -------------- | ------------------------------------- |
+| `level`         | int            | Current upgrade level of the building |
+| `nextLevelData` | `BuildingData` | Reference to next level's data asset  |
 
 ### Connection Properties
 
-| Property         | Type                                                                               | Description                                     |
-| ---------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------- |
-| `connectionData` | [`BuildingConnectionData`](/broken/pages/deb5ed7755280b13332afeee60fe3450275dd4ce) | Optional configuration for neighbor connections |
+| Property         | Type                     | Description                                     |
+| ---------------- | ------------------------ | ----------------------------------------------- |
+| `connectionData` | `BuildingConnectionData` | Optional configuration for neighbor connections |
 
 ### Usage Example
 
@@ -82,7 +82,7 @@ bool hasUpgrade = data.HasUpgrade();
 
 ## BuildingDatabaseSO
 
-The [`BuildingDatabaseSO`](/broken/pages/a8668d9b9f0912dc9f50f794ff4a046b6f83b231) asset serves as the central catalog of all available buildings in your project. It provides efficient runtime queries for filtering buildings by category and type.
+The `BuildingDatabaseSO` asset serves as the central catalog of all available buildings in your project. It provides efficient runtime queries for filtering buildings by category and type.
 
 ### Key Features
 
@@ -125,7 +125,7 @@ The database provides several editor utilities accessed through the Inspector:
 
 ## BuildingTags
 
-The [`BuildingTags`](/broken/pages/515ef7ba6bb084c36601bf5746034efa9ab7d7ed) enum uses the `[Flags]` attribute to provide a bitwise category system. This allows buildings to belong to multiple categories simultaneously.
+The `BuildingTags` enum uses the `[Flags]` attribute to provide a bitwise category system. This allows buildings to belong to multiple categories simultaneously.
 
 ### Predefined Categories
 
@@ -185,15 +185,15 @@ public enum BuildingTags
 
 ## BuildingCategory
 
-The [`BuildingCategory`](/broken/pages/8f406731e5ef332b9d6989a584d6039e43d1f923) asset provides optional UI organization for buildings. Unlike `BuildingTags` which are for gameplay logic, categories are primarily for organizing the building selection UI.
+The `BuildingCategory` asset provides optional UI organization for buildings. Unlike `BuildingTags` which are for gameplay logic, categories are primarily for organizing the building selection UI.
 
 ### Properties
 
-| Property       | Type                                                                     | Description                          |
-| -------------- | ------------------------------------------------------------------------ | ------------------------------------ |
-| `buildingType` | [`BuildingType`](/broken/pages/7f56da0054c4d6509e4a51dfb927a9fccb1f8b90) | Type classification                  |
-| `CategoryName` | string                                                                   | Display name for the category tab    |
-| `buildings`    | `List<BuildingData>`                                                     | Buildings belonging to this category |
+| Property       | Type                 | Description                          |
+| -------------- | -------------------- | ------------------------------------ |
+| `buildingType` | `BuildingType`       | Type classification                  |
+| `CategoryName` | string               | Display name for the category tab    |
+| `buildings`    | `List<BuildingData>` | Buildings belonging to this category |
 
 ### Usage
 
@@ -207,16 +207,16 @@ category.buildings.AddRange(newBuildingDataList);
 
 ## GridBuilderDefaults
 
-The [`GridBuilderDefaults`](/broken/pages/2ce8bc17269d7a9e061f0f118d57455e671d6e47) asset contains global settings and default prefabs used by editor tools to set up building instances automatically.
+The `GridBuilderDefaults` asset contains global settings and default prefabs used by editor tools to set up building instances automatically.
 
 ### Scene References
 
-| Property             | Type                                                                          | Description                        |
-| -------------------- | ----------------------------------------------------------------------------- | ---------------------------------- |
-| `buildingManager`    | [`BuildingManager`](/broken/pages/8025a526a441d3147f99977c74abb983a49488dd)   | Default building manager reference |
-| `defaultGridManager` | [`GridManager`](/broken/pages/9f667de7ecf9c85e0981c1a8a1b787cb4c210cfb)       | Default grid manager reference     |
-| `economyManager`     | [`EconomyManager`](/broken/pages/593b1c8a5d6ad9129794a3c0eea6660eea7aea7e)    | Economy system manager             |
-| `buildingManagerUI`  | [`BuildingManagerUI`](/broken/pages/125411ec274b1e341c6b9d408c188c61b8f97a4f) | UI manager reference               |
+| Property             | Type                | Description                        |
+| -------------------- | ------------------- | ---------------------------------- |
+| `buildingManager`    | `BuildingManager`   | Default building manager reference |
+| `defaultGridManager` | `GridManager`       | Default grid manager reference     |
+| `economyManager`     | `EconomyManager`    | Economy system manager             |
+| `buildingManagerUI`  | `BuildingManagerUI` | UI manager reference               |
 
 ### Prefab References
 
