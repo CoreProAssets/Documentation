@@ -8,6 +8,7 @@
 * [How to:](grid-builder-pro/how-to/README.md)
   * [Bake level](grid-builder-pro/how-to/bake-level.md)
   * [Create Building](grid-builder-pro/how-to/create-building.md)
+  * [Connection system](grid-builder-pro/how-to/connection-system.md)
 * [Grid system](grid-builder-pro/grid-system/README.md)
   * [Grid manager](grid-builder-pro/grid-system/grid-manager.md)
 * [Building systems](grid-builder-pro/building-systems/README.md)
